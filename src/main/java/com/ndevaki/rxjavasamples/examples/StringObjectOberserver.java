@@ -4,7 +4,7 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-public class StringOberserver {
+public class StringObjectOberserver {
     private static  String displayString="Fist Message";
     private static Observable<String> observable= Observable.just(displayString);
     private static Observer observer;
