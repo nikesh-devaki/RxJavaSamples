@@ -70,13 +70,13 @@ public class RxVsStream {
     public static ArrayList<Integer> calculateSquareAsync(List<Integer> list){
         ArrayList<Integer> result=new ArrayList<Integer>();
         Observable.fromIterable(list)
-                  .flatMap(integer->Observable.just(integer))
+                  .flatMap(n->Observable.just(n)
                   .map(integer->{
                           System.out.println("map "+integer+" "+Thread.currentThread().getName());
                           Thread.sleep(3000);
                           return integer*integer;
                       })
-                  .subscribeOn(Schedulers.io())
+                  .subscribeOn(Schedulers.computation()))
                   .blockingSubscribe(result::add);
         return result;
 
